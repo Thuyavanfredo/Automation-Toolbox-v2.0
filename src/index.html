@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <script src="./script.js"></script>
+    <script src="./control.js" defer type="module"s></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="index.css">
+    <title>Automation Toolbox v2.0</title>
+</head>
+<body>
+    <div class="traffic-lights">
+            <button class="traffic-light traffic-light-minimize" id="minimize"><p>&minus;</p></button>
+            <button class="traffic-light traffic-light-close" id="close-app"><p>&#10006;</p></button>
+          </div>
+        <nav>
+            <div class="nav-item"><button class="nav" id="pdt">Periodicals</button></div>
+            <div class="nav-item"><button class="nav" id="spec">Specification</button></div>
+            <div class="nav-item"><button class="nav" id="da">D&A</button></div>
+        </nav>
+        <div class="bug">
+            <button id="bug"><img src="../img/Reportbug.png" alt="bug"></button></div>
+        <div class="container">
+            <div class="content">
+                <div class="icon-container">
+                    <div class="icon icon-expand">
+                        <i id="home" class='fa fa-home'></i>
+                    </div>
+                    <div class="icon1 icon-expand">
+                        <i id="info" class='fa fa-info'></i>
+                    </div>
+                    <div class="icon1 icon-expand">
+                        <i id="contact " class='fa fa-user'></i>
+                    </div>
+                </div> 
+            </div>
+            <div class="text-title">
+                <h1>
+                    <span id="text-title" style="display: none;" class="reveal">
+                        Automation Toolbox<span style="font-size: small; color: #f0ede8;">V2.0</span>
+                    </span>
+                </h1>
+            </div>
+            <div class="pdt-btns" style="display: none;">
+                <button class="bt">Graphic Insert</button>
+                <button class="bt">Xref Insert</button>
+                <button class="bt" id="child">Steplist Creator</button>
+                <button class="bt">Metric Conv.</button>
+                <button class="bt" id="jt" onclick="window.electronAPI.updateEvent('JT prep Tool')">JT Prep Tool</button>
+                <button class="bt" onclick="window.electronAPI.setTitle('Prefix');window.electronAPI.updateEvent('Prefix Update')">Prefix Update</button>
+            </div>
+            <div class="spec-btns" style="display: none;">
+                <button class="bt">BookScan</button>
+                <button class="bt">Spec Table</button>
+            </div>
+            <div class="da-btns" style="display: none;">
+                <button class="bt" id="link" onclick="window.electronAPI.updateEvent('Weight Calculator')">Weight Calc.</button>
+                <button class="bt" id="child1">Steplist Creator</button>
+                <button class="bt">Metric Conv.</button>
+            </div>
+            <div class="body" id="body">
+                <video class="video" controls poster="../img/sis2.0.png" src="../img/Introducing SIS 2.0.webmhd.webm" onclick="window.electronAPI.updateEvent('Tutorial');"></video>
+            </div>     
+        </div>
+</body>
+</html>
