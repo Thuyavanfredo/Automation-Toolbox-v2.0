@@ -1,9 +1,8 @@
 // See the Electron documentation for details on how to use preload scripts:
 // https://www.electronjs.org/docs/latest/tutorial/process-model#preload-scripts
-const { contextBridge, ipcRenderer, shell } = require("electron");
+const { contextBridge, ipcRenderer} = require("electron");
 const { writeFile, readFile } = require("fs");
 const { title } = require("process");
-const { start } = require("repl");
 contextBridge.exposeInMainWorld('electronAPI', {
     setTitle: (title) => ipcRenderer.send('set-title', title),
     updateEvent:(buttonType)=>{
@@ -17,7 +16,6 @@ contextBridge.exposeInMainWorld('electronAPI', {
         // const filePath = path.join(networkSharePath, fileName);
 
         // const path = "G:/Analytics/"+process.env.USERNAME+".json";
-        console.log("steplist");
         const path = "//catedcnas2.ap.cat.com/PSID-I/Analytics/"+process.env.USERNAME+".json";
         let currentDate = new Date();
         let cDay = currentDate.getDate();
@@ -81,7 +79,8 @@ const API = {
         child: () => ipcRenderer.send("app/child"),
         child1: () => ipcRenderer.send("app/child1"),
         jt: () => ipcRenderer.send("app/jt"),
+        prefix: () => ipcRenderer.send("app/prefix"),
     },
 }
-
 contextBridge.exposeInMainWorld("app", API);
+

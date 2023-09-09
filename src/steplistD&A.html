@@ -2,7 +2,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="./steplist.js"></script>
 <link rel="stylesheet" href="./steplist.css" type="text/css" />
-<script src="https://jsuites.net/v4/jsuites.js"></script>
+<script src="./jsuite.js"></script>
 <!-- <link rel="stylesheet" href="https://jsuites.net/v4/jsuites.css" type="text/css" /> -->
 
 <body>
@@ -26,15 +26,7 @@
                   </div>
                 </button>
                 <button id="btn2" onclick="window.electronAPI.updateEvent('Specfication Table-D&A');">
-                  <p id="btnText2">Spec Table</p>
-                  <div class="checked">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
-                      <path fill="transparent" d="M14.1 27.2l7.1 7.2 16.7-16.8"></path>
-                    </svg>
-                  </div>
-                </button>
-                <button id="btn3" onclick="window.electronAPI.updateEvent('Approx. weight Table-D&A');">
-                  <p id="btnText3">Weight Table</p>
+                  <p id="btnText2">FI Table</p>
                   <div class="checked">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
                       <path fill="transparent" d="M14.1 27.2l7.1 7.2 16.7-16.8"></path>
@@ -208,7 +200,7 @@
           btnText.innerHTML = "Tool Table";  
         }, (3*1000));
         console.log(JSON.stringify(data))
-        var prefix = `<table frame="all" id="i08328159.2"><tgroup cols="4"><?PubTbl tgroup clmarg="2.0pt" crmarg="2.0pt"?><colspec colname="col1" colwidth="44*"/><colspec colname="col2" colwidth="85*"/><colspec colname="col3" colwidth="169*"/><colspec colname="col4" colwidth="38*"/><thead><row><entry align="center" nameend="col4" namest="col1"><?Pub _cellfont Weight="bold"?><?PubTbl cell border-bottom-width="0.20pt" border-left-width="0.20pt" border-right-width="0.20pt" border-top-width="0.20pt"?><para>Required Tools</para></entry></row><row><entry align="center"><?Pub _cellfont Weight="bold"?><?PubTbl cell border-bottom-width="0.20pt" border-left-width="0.20pt" border-right-width="0.20pt"?><para>Tool</para></entry><entry align="center"><?Pub _cellfont Weight="bold"?><?PubTbl cell border-bottom-width="0.20pt" border-right-width="0.20pt"?><para>Part Number</para></entry><entry align="center"><?Pub _cellfont Weight="bold"?><?PubTbl cell border-bottom-width="0.20pt" border-right-width="0.20pt"?><para>Part Descriion</para></entry><entry align="center"><?Pub _cellfont Weight="bold"?><?PubTbl cell border-bottom-width="0.20pt" border-right-width="0.20pt"?><para>Qty</para></entry></row></thead><tbody>`
+        var prefix = `<table frame="all" id="i08328159.2"><tgroup cols="4"><?PubTbl tgroup clmarg="2.0pt" crmarg="2.0pt"?><colspec colname="col1" colwidth="44*"/><colspec colname="col2" colwidth="85*"/><colspec colname="col3" colwidth="169*"/><colspec colname="col4" colwidth="38*"/><thead><row><entry align="center" nameend="col4" namest="col1"><?Pub _cellfont Weight="bold"?><?PubTbl cell border-bottom-width="0.20pt" border-left-width="0.20pt" border-right-width="0.20pt" border-top-width="0.20pt"?><para>Required Tools</para></entry></row><row><entry align="center"><?Pub _cellfont Weight="bold"?><?PubTbl cell border-bottom-width="0.20pt" border-left-width="0.20pt" border-right-width="0.20pt"?><para>Tool</para></entry><entry align="center"><?Pub _cellfont Weight="bold"?><?PubTbl cell border-bottom-width="0.20pt" border-right-width="0.20pt"?><para>Part Number</para></entry><entry align="center"><?Pub _cellfont Weight="bold"?><?PubTbl cell border-bottom-width="0.20pt" border-right-width="0.20pt"?><para>Part Description</para></entry><entry align="center"><?Pub _cellfont Weight="bold"?><?PubTbl cell border-bottom-width="0.20pt" border-right-width="0.20pt"?><para>Qty</para></entry></row></thead><tbody>`
         var suffix = `</tbody></tgroup></table>`
         var innerText = ""
         data.map((item, index)=>{
@@ -249,32 +241,6 @@
         navigator.clipboard.writeText(prefix+innerText+suffix);
   })
   $("button:eq(3)").click(function(){
-          var btn = document.getElementById("btn3");
-          var btnText = document.getElementById("btnText3");
-          btnText.innerHTML = "Copied";
-          btn.classList.add("active");
-          setTimeout(function(){
-          btn.classList.remove("active");
-          btnText.innerHTML = "Weight Table";  
-        }, (3*1000));
-        console.log(JSON.stringify(data))
-        var prefix = `<table frame="all" id="i09608397.1"><tgroup align="center" cols="3"><colspec colname="col1"/><colspec colname="col2"/><colspec colname="col3"/><thead><row valign="middle"><entry nameend="col3" namest="col1"><?PubTbl cell border-bottom-width="0.20pt" border-left-width="0.20pt" border-right-width="0.20pt" border-top-width="0.20pt"?><para>Approximate Weight</para></entry></row><row valign="middle"><entry><?PubTbl cell border-bottom-width="0.20pt" border-left-width="0.20pt" border-right-width="0.20pt"?><para>Part Number</para></entry><entry><?PubTbl cell border-bottom-width="0.20pt" border-right-width="0.20pt"?><para>Part Name</para></entry><entry><?PubTbl cell border-bottom-width="0.20pt" border-right-width="0.20pt"?><para>Weight</para></entry></row></thead><tbody>`
-        var suffix = `</tbody></tgroup></table>`
-        var innerText = ""
-        data.map((item, index)=>{
-         if(item[2]&&item[4]){
-            console.log(index, item)
-            let PN = getPN(item)
-            let KG = getConv(item)
-            innerText+=`<row valign="middle"><entry colname="col1"><para><partno>${PN}</partno></para></entry><entry colname="col2"><para><cpn></cpn></para></entry><entry colname="col3"><para>${KG}</para></entry></row>`
-        }else{
-            return
-          }
-        })
-        console.log(prefix, innerText, suffix)
-        navigator.clipboard.writeText(prefix+innerText+suffix);
-  })
-  $("button:eq(4)").click(function(){
           var btn = document.getElementById("btn4");
           var btnText = document.getElementById("btnText4");
           btnText.innerHTML = "Copied";
@@ -310,7 +276,7 @@
       })
     navigator.clipboard.writeText("<steplist>"+figureOut+"</steplist>");
     })
-  $("button:eq(5)").click(function(){
+  $("button:eq(4)").click(function(){
           var btn = document.getElementById("btn5");
           var btnText = document.getElementById("btnText5");
           btnText.innerHTML = "Copied";
@@ -346,7 +312,7 @@
     })
   navigator.clipboard.writeText(figureOut);
   })
-  $("button:eq(6)").click(function(){
+  $("button:eq(5)").click(function(){
           var btn = document.getElementById("btn6");
           var btnText = document.getElementById("btnText6");
           btnText.innerHTML = "Copied";

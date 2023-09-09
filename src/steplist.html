@@ -2,7 +2,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="./steplist.js"></script>
 <link rel="stylesheet" href="./steplist.css" type="text/css" />
-<script src="https://jsuites.net/v4/jsuites.js"></script>
+<script src="./jsuite.js"></script>
 <!-- <link rel="stylesheet" href="https://jsuites.net/v4/jsuites.css" type="text/css" /> -->
 
 <body>
@@ -161,7 +161,7 @@
         var suffix = `</tbody></tgroup></table>`
         var innerText = ""
         data.map((item, index)=>{
-         if(item[0]&&item[1]&&item[2]){
+         if(item[0]&&item[2]){
             console.log(index, item[2])
             let PN = getPN(item)
             innerText+=`<row valign="middle"> <entry colname="col1"><para>${item[0]}</para></entry> <entry colname="col2"><para>${item[1]}</para></entry> <entry colname="col3"><para><partno>${PN}</partno></para></entry> <entry colname="col4"><para><cpn></cpn></para></entry> </row>`

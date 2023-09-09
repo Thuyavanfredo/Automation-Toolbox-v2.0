@@ -1,19 +1,19 @@
 const { app, BrowserWindow, ipcMain} = require('electron');
 const path = require('path');
-const { autoUpdater } = require("electron-updater")
+const { autoUpdater } = require('electron-updater')
 const log = require('electron-log');
 const fs = require("fs");
 
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
 
-fs.mkdir("C:/Automation Toolboxv3.0", function(err) {
+fs.mkdir("C:/Automation Toolboxv2.0", function(err) {
   if (err) {
     console.log(err)
   } else {
     console.log("New directory successfully created.")
   }
 })
-log.transports.file.resolvePath = () => path.join("C:/Automation Toolboxv3.0", '/logs/main.log');
+log.transports.file.resolvePath = () => path.join("C:/Automation Toolboxv2.0", '/logs/main.log');
 log.log("Application version"+ app.getVersion())
 log.info('Hello, log');
 
@@ -21,19 +21,6 @@ log.info('Hello, log');
 // eslint-disable-next-line global-require
 if (require('electron-squirrel-startup')) {
   app.quit();
-}
-function handleSetTitle (event, prefix) {
-  var child = require('child_process').execFile;
-  var executablePath = "./.exe/Effectivity Macro 2.07.exe";
-  
-  child(executablePath, function(err, data) {
-      if(err){
-         console.error(err);
-         return;
-      }
-   
-      console.log(data.toString());
-  });
 }
 let mainWindow;
 const createWindow = () => {
@@ -72,7 +59,6 @@ const createWindow = () => {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
-  ipcMain.on('set-title', handleSetTitle)
   createWindow()
   app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0) {
@@ -185,15 +171,14 @@ ipcMain.on("app/jt", () => {
         }
 })
 });
-// ipcMain.on("app/mail", () => {
-//   // Replace 'https://www.example.com' with the link you want to open
-//   const recipientEmail = 'thuyavanoo7@gmail.com';
-//   const subject = encodeURIComponent('test');
-//   const body = encodeURIComponent('hello');
-
-//   const mailtoUrl = `mailto:${recipientEmail}?subject=${subject}&body=${body}`;
-//   shell.openExternal(mailtoUrl);
-// });
-
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and import them here.
+ipcMain.on("app/prefix", () => {
+  var child = require('child_process').execFile;
+  var executablePath = "./.exe/Effectivity Macro 2.07.exe";
+  
+  child(executablePath, function(err, data) {
+      if(err){
+         console.error(err);
+         return;
+      }
+})
+});

@@ -1,12 +1,13 @@
 {
   "name": "automation-toolbox-v2.0",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Automation Toolbox v2.0",
   "main": "src/index.js",
   "icon": "img/android-chrome-512x512.png",
   "scripts": {
     "start": "electron .",
     "package": "electron-builder -p always",
+    "watch": "nodemon --exec electron .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "build": {
@@ -38,8 +39,9 @@
     "electron-builder": "^24.6.4"
   },
   "dependencies": {
+    "electron-log": "^4.4.8",
     "electron-squirrel-startup": "^1.0.0",
     "electron-updater": "^5.3.0",
-    "electron-log": "^4.4.8"
+    "nodemon": "^3.0.1"
   }
 }
