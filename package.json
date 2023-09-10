@@ -16,6 +16,10 @@
       "target": "NSIS",
       "icon": "img/android-chrome-512x512.png"
     },
+    "extraResources": [
+      "Effectivity Macro 2.07.exe",
+      "JT"
+    ],
     "publish": [
       {
         "provider": "github",
@@ -35,8 +39,8 @@
   },
   "homepage": "https://github.com/Thuyavanfredo/Automation-Toolbox-v2.0#readme",
   "devDependencies": {
-    "electron": "^26.2.0",
-    "electron-builder": "^24.6.4"
+    "electron-builder": "^23.6.0",
+    "electron": "^26.2.0"
   },
   "dependencies": {
     "electron-log": "^4.4.8",

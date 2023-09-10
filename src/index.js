@@ -14,7 +14,7 @@ fs.mkdir("C:/Automation Toolboxv2.0", function(err) {
   }
 })
 log.transports.file.resolvePath = () => path.join("C:/Automation Toolboxv2.0", '/logs/main.log');
-log.log("Application version"+ app.getVersion())
+log.log("Application version "+ app.getVersion())
 log.info('Hello, log');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
@@ -162,7 +162,7 @@ ipcMain.on("app/child1", () => {
 });
 ipcMain.on("app/jt", () => {
     var child = require('child_process').execFile;
-    var executablePath = path.join(__dirname,'JT/JTPrep.exe');
+    var executablePath = "./resources/JT/JTPrep.exe";
     
     child(executablePath, function(err, data) {
         if(err){
