@@ -162,7 +162,7 @@ ipcMain.on("app/child1", () => {
 });
 ipcMain.on("app/jt", () => {
     var child = require('child_process').execFile;
-    var executablePath = "./.exe/JTPrep_Release_Jan2023/JTPrep.exe";
+    var executablePath = path.join(__dirname,'JT/JTPrep.exe');
     
     child(executablePath, function(err, data) {
         if(err){
@@ -173,7 +173,7 @@ ipcMain.on("app/jt", () => {
 });
 ipcMain.on("app/prefix", () => {
   var child = require('child_process').execFile;
-  var executablePath = "./.exe/Effectivity Macro 2.07.exe";
+  var executablePath = path.join(__dirname,'Effectivity Macro 2.07.exe');
   
   child(executablePath, function(err, data) {
       if(err){
