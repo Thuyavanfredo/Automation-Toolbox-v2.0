@@ -8,6 +8,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
     <script src="./script.js"></script>
     <script defer src="./control.js"></script>
+    <script defer src="./modal.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope&display=swap" rel="stylesheet">
@@ -26,7 +27,7 @@
             <div class="nav-item"><button class="nav" id="da">D&A</button></div>
         </nav>
         <div class="bug">
-            <button id="bug"><img src="../img/Reportbug.png" alt="bug"></button>
+            <button class="bugopen"><img src="../img/Reportbug.png" alt="bug"></button>
         </div>
     <div id="message">1.0.0</div>
 
@@ -72,5 +73,19 @@
                 <video class="video" controls poster="../img/sis2.0.png" src="../img/Introducing SIS 2.0.webmhd.webm" onclick="window.electronAPI.updateEvent('Tutorial');"></video>
             </div>     
         </div>
+        <div class="overlay hidden"></div>
+        <section class="modal hidden">
+            <div class="flex">
+              <img src="../img/message1.gif" width="60px" height="60px" alt="user" />
+              <button class="btn-close">⨉</button>
+            </div>
+            <div>
+        <h3 style="color: #2d2c3e;">Report a bug!</h3>
+              <p>
+                Send an email in detail about the bug you have encountered in this toolbox and attach screenshots (if possible).
+              </p>
+            </div>
+          <button id="bug" class="btn">Send</button>
+          </section>
 </body>
 </html>

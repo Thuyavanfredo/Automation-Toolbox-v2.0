@@ -1090,3 +1090,87 @@ html,body {
       }
   }
   
+
+
+  /* Modal window styling */
+
+  .modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.4rem;
+    width: 350px;
+    padding: 1.3rem;
+    min-height: 150px;
+    position: absolute;
+    top: 25%;
+    left: 30%;
+    background: linear-gradient(103deg,#abc1b5,#fbba4c 0%);
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    z-index: 2;
+    -webkit-app-region: drag;
+  }
+  
+  .modal .flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    -webkit-app-region: no-drag;
+  }
+  
+  .modal p {
+    font-size: 0.9rem;
+    font-family: "Avenir";
+    color: #2d2c3e;
+    margin: 0.4rem 0 0.2rem;
+    -webkit-app-region: no-drag;
+  }
+  
+  button {
+    cursor: pointer;
+    border: none;
+    font-weight: 600;
+    -webkit-app-region: no-drag;
+  }
+  
+  .btn {
+    display: inline-block;
+    padding: 0.8rem 1.4rem;
+    font-weight: 700;
+    background-color: #2d2c3e;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1em;
+    -webkit-app-region: no-drag;
+  }
+  
+  .btn-open {
+    position: absolute;
+    bottom: 150px;
+    -webkit-app-region: no-drag;
+  }
+  
+  .btn-close {
+    transform: translate(10px, -20px);
+    padding: 0.5rem 0.7rem;
+    background: #eee;
+    border-radius: 50%;
+    -webkit-app-region: no-drag;
+  }
+  .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+    z-index: 2;
+  }
+  .hidden {
+    display: none;
+  }

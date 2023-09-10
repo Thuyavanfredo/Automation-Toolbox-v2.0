@@ -1715,11 +1715,6 @@ $(document).ready(function () {
         }
       });
     }); 
-    $("#bug").click(function (e) {
-      if(confirm("Do you want to report a bug?")){
-        window.location.href = "mailto:tamilarasan_thuyavan@cat.com?subject=Bug found in Automation Toolbox&body=**Please mention in detail about the bug you have encountered in the toolbox and attach screenshots (if possible)** ";
-      }
-    });
     $(".bt:eq(8)").click(function () {
       $(".body").html('<div class="logo"><img src="../img/EA_centerlogo.png" alt=""></div>');   
     });
