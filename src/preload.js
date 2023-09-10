@@ -31,7 +31,6 @@ contextBridge.exposeInMainWorld('electronAPI', {
                         userName: process.env.USERNAME,
                         Date: cdate,
                         Time: time,
-                        App: start,
                         buttonType,
                     }], null, 2), (err) => {
                         if (err) {
@@ -57,7 +56,6 @@ contextBridge.exposeInMainWorld('electronAPI', {
                 userName: process.env.USERNAME,
                 Date: cdate,
                 Time: time,
-                App: start,
                 buttonType,
             });
             
