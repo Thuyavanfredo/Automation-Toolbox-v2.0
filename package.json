@@ -17,6 +17,7 @@
       "icon": "img/android-chrome-512x512.png"
     },
     "extraResources": [
+      "excel",
       "Effectivity Macro 2.07.exe",
       "JT"
     ],
@@ -39,8 +40,8 @@
   },
   "homepage": "https://github.com/Thuyavanfredo/Automation-Toolbox-v2.0#readme",
   "devDependencies": {
-    "electron-builder": "^23.6.0",
-    "electron": "^26.2.0"
+    "electron": "^26.2.0",
+    "electron-builder": "^23.6.0"
   },
   "dependencies": {
     "electron-log": "^4.4.8",

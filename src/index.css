@@ -60,6 +60,7 @@ html,body {
     position: absolute;
     right: 10px;
     top: 10px;
+    z-index: 5;
   }
   .periodicals{
     display: flex;
@@ -68,6 +69,12 @@ html,body {
     align-items: center;
     position: relative;
     width: 350px;
+  }
+  #downloadButton{
+      background: none;
+      position: absolute;
+      right: 27px;
+      top: 83px;
   }
   .periodicals1{
     display: flex;

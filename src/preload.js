@@ -3,6 +3,7 @@
 const { contextBridge, ipcRenderer} = require("electron");
 const { writeFile, readFile } = require("fs");
 const { title } = require("process");
+
 contextBridge.exposeInMainWorld('electronAPI', {
     setTitle: (title) => ipcRenderer.send('set-title', title),
     updateEvent:(buttonType)=>{
@@ -78,6 +79,8 @@ const API = {
         child1: () => ipcRenderer.send("app/child1"),
         jt: () => ipcRenderer.send("app/jt"),
         prefix: () => ipcRenderer.send("app/prefix"),
-    },
+        download: () => ipcRenderer.send("app/download")
+},
 }
 contextBridge.exposeInMainWorld("app", API);
+

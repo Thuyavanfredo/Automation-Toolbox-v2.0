@@ -6,7 +6,7 @@ const fs = require("fs");
 
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
 
-fs.mkdir("C:/Automation Toolboxv2.0", function(err) {
+fs.mkdir("C:/Automation Toolbox v2.0", function(err) {
   if (err) {
     console.log(err)
   } else {
@@ -182,3 +182,24 @@ ipcMain.on("app/prefix", () => {
       }
 })
 });
+ipcMain.on("app/download", () => {
+  const { shell } = require('electron');
+  const fs = require("fs");
+
+  const sourcePath = "./resources/excel/ResearchsheetTemplate_Final.xlsm"; // Adjust the path and filename as needed
+  const destPath = path.join(app.getPath('downloads'), 'ResearchsheetTemplate_Final.xlsm'); // Adjust the filename as needed
+  fs.copyFile(sourcePath, destPath, (err) => {
+    if (err) {
+      console.log('copy-error', err.message);
+    } else {
+      console.log('copy-success', destPath);
+    }
+  });
+  shell.openPath(destPath); // Open the file
+});
+
+
+
+
+
+
