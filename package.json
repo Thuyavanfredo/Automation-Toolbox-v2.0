@@ -1,6 +1,6 @@
 {
   "name": "automation-toolbox-v2.0",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Automation Toolbox v2.0",
   "main": "src/index.js",
   "icon": "img/android-chrome-512x512.png",
@@ -11,7 +11,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "build": {
-    "productName": "Automation ToolBox",
+    "productName": "Automation ToolBox v2.0",
     "win": {
       "target": "NSIS",
       "icon": "img/android-chrome-512x512.png"
