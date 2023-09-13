@@ -14,8 +14,8 @@ html,body {
   }
   #message {
       position: absolute;
-      left: 5%;
-      top: 91%;
+      right: 4%;
+      top: 90.5%;
       z-index: 3;
       font-size: 14px;
       color: #9d835a;

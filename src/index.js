@@ -13,7 +13,7 @@ fs.mkdir("C:/Automation Toolbox v2.0", function(err) {
     console.log("New directory successfully created.")
   }
 })
-log.transports.file.resolvePath = () => path.join("C:/Automation Toolboxv2.0", '/logs/main.log');
+log.transports.file.resolvePath = () => path.join("C:/Automation Toolbox v2.0", '/logs/main.log');
 log.log("Application version "+ app.getVersion())
 log.info('Hello, log');
 

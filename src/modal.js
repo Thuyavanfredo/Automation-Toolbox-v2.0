@@ -17,7 +17,6 @@ $(document).ready(function () {
       closeModalBtn.addEventListener("click", closeModal);
     
       $("#bug").click(function (e) {
-          window.location.href = "mailto:tamilarasan_thuyavan@cat.com?subject=Bug found in Automation Toolbox&body=**Please mention in detail about the bug you have encountered in the toolbox and attach screenshots (if possible)** ";
             if (window.location.href= "mailto:tamilarasan_thuyavan@cat.com?subject=Bug found in Automation Toolbox&body=**Please mention in detail about the bug you have encountered in the toolbox and attach screenshots (if possible)** ") {
                 closeModal();
             } else {

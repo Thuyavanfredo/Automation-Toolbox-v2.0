@@ -316,7 +316,7 @@ $(document).ready(function () {
         const templates = [
           'Illustration <xref format="dita" href="#./IE.ID"scope="local" type="figure"></xref>',
           'Step <xref format="dita" href="#./IE.ID"scope="local" type="step"></xref>',
-          'Footnote <xref format="dita" href="#./IE.ID"scope="local" type="fn"></xref>',
+          '<xref format="dita" href="#./IE.ID"scope="local" type="fn"></xref>',
           'Table <xref format="dita" href="#./IE.ID"scope="local" type="table"></xref>',
           'Section <xref format="dita" href="#./IE.ID"scope="local" type="sect"></xref>',
         ];
