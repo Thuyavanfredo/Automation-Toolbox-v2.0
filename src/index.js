@@ -22,8 +22,31 @@ log.info('Hello, log');
 if (require('electron-squirrel-startup')) {
   app.quit();
 }
+
+// This method will be called when Electron has finished
+// initialization and is ready to create browser windows.
+// Some APIs can only be used after this event occurs.
+app.whenReady().then(() => {
+  const specifiedPath = "C:/Users/"+process.env.USERNAME+"/Caterpillar/SID - Service Information Division Group - Automation Toolbox/app data";
+
+  fs.access(specifiedPath, fs.constants.F_OK, (err) => {
+  if (err) {
+    error();
+    // Display a dialog to the user or handle the error in a way that suits your application
+  } else {
+    createWindow();
+  }
+});
+  app.on("activate", () => {
+    if (BrowserWindow.getAllWindows().length === 0) {
+      createWindow();
+    }
+  });
+  autoUpdater.checkForUpdatesAndNotify()
+})
+let errorWindow;
 let mainWindow;
-const createWindow = () => {
+function createWindow() {
   // Create the browser window.
     mainWindow = new BrowserWindow({
     width: 887,
@@ -54,20 +77,28 @@ const createWindow = () => {
   // Open the DevTools.
   // mainWindow.webContents.openDevTools();
 }
-
-// This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
-// Some APIs can only be used after this event occurs.
-app.whenReady().then(() => {
-  createWindow()
-  app.on("activate", () => {
-    if (BrowserWindow.getAllWindows().length === 0) {
-      createWindow();
-    }
+function error() {
+  // Create the browser window.
+    errorWindow = new BrowserWindow({
+    width: 450,
+    height: 300,
+    icon: path.join(__dirname, '../img/cloudsync.png'),
+    frame: false,
+    transparent:true,
+    backgroundColor: "#00000001",
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: true,
+      // enableRemoteModule: true,
+      preload: path.join(__dirname, 'preload.js'),
+    },
   });
-  autoUpdater.checkForUpdatesAndNotify()
-})
-
+  // and load the index.html of the app.
+  errorWindow.loadFile(path.join(__dirname, 'error.html'));
+  errorWindow.setMenuBarVisibility(false)
+  // Open the DevTools.
+  // mainWindow.webContents.openDevTools();
+}
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits
 // explicitly with Cmd + Q.
@@ -110,6 +141,9 @@ autoUpdater.on("error",(err)=>{
 ipcMain.on("app/close", () => {
   mainWindow.close();
 });
+ipcMain.on("app/errorClose", () => {
+  errorWindow.close();
+});
 ipcMain.on("app/minimize", () => {
   mainWindow.minimize();
 });
@@ -117,6 +151,11 @@ ipcMain.on("app/link", () => {
   const { shell } = require('electron');
   const EA = 'https://engineeringautomation.ecorp.cat.com/eatcui/PNWC/';
   shell.openExternal(EA);
+});
+ipcMain.on("app/sync", () => {
+  const { shell } = require('electron');
+  const SY = `https://www.google.com/`;  
+  shell.openExternal(SY);
 });
 ipcMain.on("app/child", () => {
   const { screen } = require('electron')

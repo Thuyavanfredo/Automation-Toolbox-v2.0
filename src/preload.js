@@ -82,6 +82,10 @@ const API = {
         prefix: () => ipcRenderer.send("app/prefix"),
         download: () => ipcRenderer.send("app/download")
 },
+errorWindow: {
+    close: () => ipcRenderer.send("app/errorClose"),
+    sync: () => ipcRenderer.send("app/sync")
+},
 }
 contextBridge.exposeInMainWorld("app", API);
 

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="./errorcontrol.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./error.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="traffic-lights">
+        <button class="traffic-light traffic-light-close" id="errorClose"><p>&#10006;</p></button>
+    </div>
+    <div class="error">
+        <img src="../img/onedrive.jpg">    
+    </div>
+    <div class="errorLogo">
+        <button id="installLink" onclick="window.electronAPI.updateEvent('cloudsync')"><img src="../img/cloudsync.png" alt=""></button>
+    </div>
+    <div class="errorMsg">
+        <p>Click the icon to sync with your PC to proceed further!</p>
+    </div>
+</body>
+</html>
