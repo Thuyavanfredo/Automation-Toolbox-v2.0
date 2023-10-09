@@ -154,7 +154,7 @@ ipcMain.on("app/link", () => {
 });
 ipcMain.on("app/sync", () => {
   const { shell } = require('electron');
-  const SY = `https://www.google.com/`;  
+  const SY = `https://caterpillar.sharepoint.com/teams/sid-serviceinformationdivisiongroup/Shared%20Documents/Forms/AllItems.aspx?RootFolder=%2Fteams%2Fsid%2Dserviceinformationdivisiongroup%2FShared%20Documents%2FGeneral%2FAutomation%20Toolbox&FolderCTID=0x0120007D2DEEB8BAD60644BD36B0A4839F2D19`;  
   shell.openExternal(SY);
 });
 ipcMain.on("app/child", () => {

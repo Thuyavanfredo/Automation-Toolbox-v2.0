@@ -973,9 +973,8 @@ html,body {
       width: 176px;
       height: 26px;
       border-radius: 20px;
-      padding: 0px;
       border: none;
-      margin: 20px;
+      margin: 15px;
       background-color: #e1e2e2;
     }
     .plus span{

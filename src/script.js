@@ -112,7 +112,7 @@ $(document).ready(function () {
                 <strong>BookScan</strong>
                 <ul>
                     <li>Simon Santhosh</li> 
-                    <li>Thuyavan</li> 
+                    <li>Thuyavan Tamilarasan</li> 
                 </ul> 
             </div>                          
         </div>
@@ -350,10 +350,10 @@ $(document).ready(function () {
           <div class="text-items"><p>Torque</p></div>
           <div class="text-items"><p>Length (mm)</p></div>
           <div class="text-items"><p>Length (cm)</p></div>
-          <div class="text-items"><p>weight</p></div>
+          <div class="text-items"><p>Weight</p></div>
           <div class="text-items"><p>Temperature</p></div>
           <div class="text-items"><p>Flow</p></div>
-          <div class="text-items"><p>pressure</p></div>
+          <div class="text-items"><p>Pressure</p></div>
           <div class="text-items"><p>Volume</p></div>
         </div>
         <div class="metric-container">
@@ -1239,10 +1239,10 @@ $(document).ready(function () {
           <div class="text-items"><p>Torque</p></div>
           <div class="text-items"><p>Length (mm)</p></div>
           <div class="text-items"><p>Length (cm)</p></div>
-          <div class="text-items"><p>weight</p></div>
+          <div class="text-items"><p>Weight</p></div>
           <div class="text-items"><p>Temperature</p></div>
           <div class="text-items"><p>Flow</p></div>
-          <div class="text-items"><p>pressure</p></div>
+          <div class="text-items"><p>Pressure</p></div>
           <div class="text-items"><p>Volume</p></div>
         </div>
         <div class="metric-container">
@@ -1384,7 +1384,7 @@ $(document).ready(function () {
             } else {
               formProps.cvalue = (formProps.value * 0.737562149277).toFixed(0);
               if (formProps.tol) {
-                formProps.ctolvalue = (formProps.tol * 0.737562149277).toFixed();
+                formProps.ctolvalue = (formProps.tol * 0.737562149277).toFixed(0);
               }
               unit_torque = "ft";
             }
