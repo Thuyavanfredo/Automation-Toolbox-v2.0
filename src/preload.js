@@ -18,7 +18,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
 
         // const path = "G:/Analytics/"+process.env.USERNAME+".json";
         // const path = "//catedcnas2.ap.cat.com/PSID-I/Analytics/"+process.env.USERNAME+".json";
-        const path = "C:/Users/"+process.env.USERNAME+"/Caterpillar/SID- Automation Toolbox Group - General/App data/program files/temp/Do Not Delete"+process.env.USERNAME+".json";
+        const path = "C:/Users/"+process.env.USERNAME+"/Caterpillar/SID- Automation Toolbox Group - General/App data/program files/temp/Do Not Delete/"+process.env.USERNAME+".json";
         let currentDate = new Date();
         let cDay = currentDate.getDate();
         let cMonth = currentDate.getMonth() + 1;
