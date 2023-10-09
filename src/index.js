@@ -27,7 +27,7 @@ if (require('electron-squirrel-startup')) {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
-  const specifiedPath = "C:/Users/"+process.env.USERNAME+"Caterpillar/SID- Automation Toolbox Group - General/App data/program files/temp/Do Not Delete";
+  const specifiedPath = "C:/Users/"+process.env.USERNAME+"/Caterpillar/SID- Automation Toolbox Group - General/App data/program files/temp/Do Not Delete";
 
   fs.access(specifiedPath, fs.constants.F_OK, (err) => {
   if (err) {
