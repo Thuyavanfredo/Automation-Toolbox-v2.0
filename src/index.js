@@ -149,12 +149,12 @@ ipcMain.on("app/minimize", () => {
 });
 ipcMain.on("app/link", () => {
   const { shell } = require('electron');
-  const EA = 'https://engineeringautomation.ecorp.cat.com/eatcui/PNWC/';
+  const EA = 'https://engineeringautomation.ecorp.cat.com';
   shell.openExternal(EA);
 });
 ipcMain.on("app/sync", () => {
   const { shell } = require('electron');
-  const SY = `https://caterpillar.sharepoint.com/teams/sid-serviceinformationdivisiongroup/Shared%20Documents/Forms/AllItems.aspx?RootFolder=%2Fteams%2Fsid%2Dserviceinformationdivisiongroup%2FShared%20Documents%2FGeneral%2FAutomation%20Toolbox&FolderCTID=0x0120007D2DEEB8BAD60644BD36B0A4839F2D19`;  
+  const SY = `https://caterpillar.sharepoint.com/teams/AutomationToolbox-Testing610Group/Shared%20Documents/Forms/AllItems.aspx?FolderCTID=0x0120005F3F1F02262B254FA0F7B19F153B8257&id=%2Fteams%2FAutomationToolbox%2DTesting610Group%2FShared%20Documents%2FGeneral&viewid=ba571bea%2Dc976%2D4105%2D8a26%2D1553ed34e528`;  
   shell.openExternal(SY);
 });
 ipcMain.on("app/child", () => {
