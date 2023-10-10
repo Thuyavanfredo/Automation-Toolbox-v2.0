@@ -17,7 +17,7 @@ $(document).ready(function () {
         transition: "transform 0.4s ease",
       });
       $(".body").html(`
-        <video class="video" controls id="video" poster="../img/sis2.0.png" src="../img/Introducing SIS 2.0.webmhd.webm"></video> 
+        <video class="video" controls id="video" poster="../img/Thumbnail.png"></video> 
         `);
       $(".pdt-btns").hide();
       $(".spec-btns").hide();
@@ -105,7 +105,7 @@ $(document).ready(function () {
             <div class="name-align">
                 <strong>Weight calculator Tool</strong>
                 <ul>
-                    <li>Gokul Chandrasekaran</li> 
+                    <li>Gokul Raj Chandrasekaran</li> 
                 </ul> 
             </div> 
             <div class="name-align">
