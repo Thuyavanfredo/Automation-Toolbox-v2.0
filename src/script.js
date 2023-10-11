@@ -242,6 +242,7 @@ $(document).ready(function () {
           ],
         ];
         const x = templates[formProps.Graphic].join((formProps.graphics.toLowerCase().replace(/\s/g, "")));
+        navigator.clipboard.writeText("");
         navigator.clipboard.writeText(x);
       });
       $(".submit button:nth-child(2)").click(function (e) {
@@ -328,8 +329,8 @@ $(document).ready(function () {
         const x = w.join(formProps.IE.toLowerCase().replace(/\s/g, ""));
         const y = x.split("ID");
         const z = y.join((formProps.ID.toLowerCase().replace(/\s/g, "")));
+        navigator.clipboard.writeText("");
         navigator.clipboard.writeText(z);
-        console.log(z);
       });
       $(".submit button:nth-child(2)").click(function (e) {
         $("#form").trigger("reset");
@@ -435,7 +436,6 @@ $(document).ready(function () {
         e.preventDefault();
         const formData = new FormData(e.target);
         const formProps = Object.fromEntries(formData);
-        console.log(formProps);
         let texttocopy;
         let unit_torque;
         let unit_length;
@@ -750,7 +750,7 @@ $(document).ready(function () {
                 String(formProps.value4).split(".")[1].length
             );
             if (formProps.tol1c) {
-              formProps.ctolvalue = (formProps.value4 * 3.785412).toFixed(
+              formProps.ctolvalue = (formProps.tol1c * 3.785412).toFixed(
                 String(formProps.tol1c).split(".")[1] &&
                   String(formProps.tol1c).split(".")[1].length
               );
@@ -766,7 +766,7 @@ $(document).ready(function () {
                 String(formProps.value4).split(".")[1].length
             );
             if (formProps.tol1c) {
-              formProps.ctolvalue = (formProps.value4 * 0.264172).toFixed(
+              formProps.ctolvalue = (formProps.tol1c * 0.264172).toFixed(
                 String(formProps.tol1c).split(".")[1] &&
                   String(formProps.tol1c).split(".")[1].length
               );
@@ -784,7 +784,7 @@ $(document).ready(function () {
                 String(formProps.value5).split(".")[1].length
             );
             if (formProps.tol1d) {
-              formProps.ctolvalue = (formProps.value5 * 6.89475727999991).toFixed(
+              formProps.ctolvalue = (formProps.tol1d * 6.89475727999991).toFixed(
                 String(formProps.tol1d).split(".")[1] &&
                   String(formProps.tol1d).split(".")[1].length
               );
@@ -800,7 +800,7 @@ $(document).ready(function () {
                 String(formProps.value5).split(".")[1].length
             );
             if (formProps.tol1d) {
-              formProps.ctolvalue = (formProps.value5 * 0.14503773800722).toFixed(
+              formProps.ctolvalue = (formProps.tol1d * 0.14503773800722).toFixed(
                 String(formProps.tol1d).split(".")[1] &&
                   String(formProps.tol1d).split(".")[1].length
               );
@@ -826,6 +826,7 @@ $(document).ready(function () {
             texttocopy = `<unitsgrp><metric>${formProps.value6} L</metric><english>${formProps.cvalue} US gal</english></unitsgrp>`;
           }
         }
+        navigator.clipboard.writeText("");
         navigator.clipboard.writeText(texttocopy);
       });
       $(".bt1 button:nth-child(2)").click(function (e) {
@@ -1064,6 +1065,7 @@ $(document).ready(function () {
           }
         });
         // console.log(notAvailable)
+        navigator.clipboard.writeText("");
         navigator.clipboard.writeText(rows.join("\n"));
         //  console.log(rows)
       });
@@ -1139,6 +1141,7 @@ $(document).ready(function () {
           }
         row = R+O+W;
         console.log(row);
+        navigator.clipboard.writeText("");
         navigator.clipboard.writeText(gcn+row); 
       })
       $(".excel").hide();
@@ -1626,7 +1629,7 @@ $(document).ready(function () {
                 String(formProps.value4).split(".")[1].length
             );
             if (formProps.tol1c) {
-              formProps.ctolvalue = (formProps.value4 * 3.785412).toFixed(
+              formProps.ctolvalue = (formProps.tol1c * 3.785412).toFixed(
                 String(formProps.tol1c).split(".")[1] &&
                   String(formProps.tol1c).split(".")[1].length
               );
@@ -1642,7 +1645,7 @@ $(document).ready(function () {
                 String(formProps.value4).split(".")[1].length
             );
             if (formProps.tol1c) {
-              formProps.ctolvalue = (formProps.value4 * 0.264172).toFixed(
+              formProps.ctolvalue = (formProps.tol1c * 0.264172).toFixed(
                 String(formProps.tol1c).split(".")[1] &&
                   String(formProps.tol1c).split(".")[1].length
               );
@@ -1660,7 +1663,7 @@ $(document).ready(function () {
                 String(formProps.value5).split(".")[1].length
             );
             if (formProps.tol1d) {
-              formProps.ctolvalue = (formProps.value5 * 6.89475727999991).toFixed(
+              formProps.ctolvalue = (formProps.tol1d * 6.89475727999991).toFixed(
                 String(formProps.tol1d).split(".")[1] &&
                   String(formProps.tol1d).split(".")[1].length
               );
@@ -1676,7 +1679,7 @@ $(document).ready(function () {
                 String(formProps.value5).split(".")[1].length
             );
             if (formProps.tol1d) {
-              formProps.ctolvalue = (formProps.value5 * 0.14503773800722).toFixed(
+              formProps.ctolvalue = (formProps.tol1d * 0.14503773800722).toFixed(
                 String(formProps.tol1d).split(".")[1] &&
                   String(formProps.tol1d).split(".")[1].length
               );
@@ -1702,6 +1705,7 @@ $(document).ready(function () {
             texttocopy = `<unitsgrp><metric>${formProps.value6} L</metric><english>${formProps.cvalue} US gal</english></unitsgrp>`;
           }
         }
+        navigator.clipboard.writeText("");
         navigator.clipboard.writeText(texttocopy);
       });
       $(".bt1 button:nth-child(2)").click(function (e) {

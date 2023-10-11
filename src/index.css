@@ -416,7 +416,7 @@ html,body {
     transition: all 0.5s linear;
     transform: translateX(200px);
   } */
-  video{
+  .video{
     -webkit-app-region: no-drag;
     top: 146px;
     left: 585px;
