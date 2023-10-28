@@ -1,9 +1,9 @@
 {
   "name": "automation-toolbox-v2.0",
-  "version": "2.0.10",
+  "version": "2.0.11",
   "description": "Automation Toolbox v2.0",
   "main": "src/index.js",
-  "icon": "img/android-chrome-512x512.png",
+  "icon": "img/Logo.ico",
   "scripts": {
     "start": "electron .",
     "package": "electron-builder -p always",
@@ -14,7 +14,7 @@
     "productName": "Automation ToolBox v2.0",
     "win": {
       "target": "NSIS",
-      "icon": "img/android-chrome-512x512.png"
+      "icon": "img/Logo.ico"
     },
     "extraResources": [
       "excel",

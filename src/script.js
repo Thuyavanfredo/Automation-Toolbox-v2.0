@@ -203,7 +203,8 @@ $(document).ready(function () {
         e.preventDefault();
         const formData = new FormData(e.target);
         const formProps = Object.fromEntries(formData);
-        const templates = [
+        const gSlice = formProps.graphics.slice(2,3);
+        const cvxTemplate = [
           [
             '<figure figure-style="page-wide" id="i06804732.',
             '"><graphic controlno="',
@@ -241,9 +242,53 @@ $(document).ready(function () {
             '.cvx"/></figure>',
           ],
         ];
-        const x = templates[formProps.Graphic].join((formProps.graphics.toLowerCase().replace(/\s/g, "")));
-        navigator.clipboard.writeText("");
-        navigator.clipboard.writeText(x);
+        const cnvTemplate = [
+          [
+            '<figure figure-style="page-wide" id="i06804732.',
+            '"><graphic controlno="',
+            '" href="x-wc://file=',
+            '.cnv"/></figure>',
+          ],
+          [
+            '<figure id="i06804732.',
+            '"><graphic controlno="',
+            '" href="x-wc://file=',
+            '.cnv"/></figure>',
+          ],
+          [
+            '<figure figure-style="full-page" id="i06804732.',
+            '"><graphic controlno="',
+            '" href="x-wc://file=',
+            '.cnv"/></figure>',
+          ],
+          [
+            '<figure figure-style="foldout" id="i06804732.',
+            '"><graphic controlno="',
+            '" href="x-wc://file=',
+            '.cnv"/></figure>',
+          ],
+          [
+            '<figure figure-style="full-page-landscape" id="i06804732.',
+            '"><graphic controlno="',
+            '" href="x-wc://file=',
+            '.cnv"/></figure>',
+          ],
+          [
+            '<figure figure-style="page-wide-landscape" id="i06804732.',
+            '"><graphic controlno="',
+            '" href="x-wc://file=',
+            '.cnv"/></figure>',
+          ],
+        ];
+        if(gSlice>=6){
+          const x = cvxTemplate[formProps.Graphic].join((formProps.graphics.toLowerCase().replace(/\s/g, "")));
+          navigator.clipboard.writeText("");
+          navigator.clipboard.writeText(x);
+        }else{
+          const x = cnvTemplate[formProps.Graphic].join((formProps.graphics.toLowerCase().replace(/\s/g, "")));
+          navigator.clipboard.writeText("");
+          navigator.clipboard.writeText(x);
+        }
       });
       $(".submit button:nth-child(2)").click(function (e) {
         $("#form").trigger("reset");
@@ -1078,7 +1123,7 @@ $(document).ready(function () {
       <div class="item-spec">
           <div class="sno1">
             <label class="spectitle">Graphic Control Number</label>
-            <input required placeholder="Enter Graphic Control Number" name="gno">
+            <input placeholder="Enter Graphic Control Number" name="gno">
           </div>
           <div class="sno">
             <label class="spectitle">Number of Rows</label>
@@ -1110,8 +1155,18 @@ $(document).ready(function () {
       const formData = new FormData(e.target);
       const formProps = Object.fromEntries(formData);
       var no = formProps.rows;
+      console.log(formProps);
+      if(formProps.gno){
       var gcno = (formProps.gno.toLowerCase().replace(/\s/g, ""));
-      var gcn = `<figure figure-style="page-wide" id="i06804732.${gcno}"><graphic controlno="${gcno}" href="x-wc://file=${gcno}.cvx"/></figure>`
+      var gnoSlice = formProps.gno.slice(2,3);
+        if (gnoSlice >= 6){
+          var gcn = `<figure figure-style="page-wide" id="i06804732.${gcno}"><graphic controlno="${gcno}" href="x-wc://file=${gcno}.cvx"/></figure>`
+        }else{
+        var gcn = `<figure figure-style="page-wide" id="i06804732.${gcno}"><graphic controlno="${gcno}" href="x-wc://file=${gcno}.cnv"/></figure>`
+        }
+      }else{
+      var gcn = ``
+      }
       const R = `<table frame="all" id="i09608397.1" pgwide="1">
       <tgroup align="center" cols="4">
       <colspec colname="col1" colwidth="0.24*"/>
