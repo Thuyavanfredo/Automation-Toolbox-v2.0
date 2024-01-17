@@ -31,10 +31,10 @@ app.whenReady().then(() => {
 
   fs.access(specifiedPath, fs.constants.F_OK, (err) => {
   if (err) {
-    createWindow();
+    error();
     // Display a dialog to the user or handle the error in a way that suits your application
   } else {
-    error();
+    createWindow();
   }
 });
   app.on("activate", () => {
