@@ -1,6 +1,6 @@
 {
   "name": "automation-toolbox-v2.0",
-  "version": "2.0.11",
+  "version": "2.0.12",
   "description": "Automation Toolbox v2.0",
   "main": "src/index.js",
   "icon": "img/Logo.ico",
@@ -18,8 +18,7 @@
     },
     "extraResources": [
       "excel",
-      "Effectivity Macro 2.07.exe",
-      "JT"
+      "Effectivity Macro 2.07.exe"
     ],
     "publish": [
       {

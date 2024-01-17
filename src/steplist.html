@@ -90,11 +90,6 @@
         width:95
     },
     {
-        type: 'text',
-        title:' ',
-        width:90
-    },
-    {
       type: 'text',
       title:'Graphics Control number',
       width:200
@@ -208,9 +203,9 @@
         }, (3*1000));
       let figureOut = ""
       data.map((item)=>{
-        if(item[5]){
-          let GCN = (String(item[5]).toLowerCase().replace(/\s/g, ""));
-          let figurePreffix =`<step id="i06804732.9"><figure figure-style="${item[6]?'column-wide':'page-wide'}" id="i06804732.${GCN}"><graphic controlno="${GCN}" href="x-wc://file=${GCN}.cvx"/>`
+        if(item[4]){
+          let GCN = (String(item[4]).toLowerCase().replace(/\s/g, ""));
+          let figurePreffix =`<step id="i06804732.9"><figure figure-style="${item[5]?'column-wide':'page-wide'}" id="i06804732.${GCN}"><graphic controlno="${GCN}" href="x-wc://file=${GCN}.cvx"/>`
           let figureSuffix=`</figure><para></para></step>`
           let figureMiddle=""
           // let forceStop=false
@@ -245,9 +240,9 @@
         }, (3*1000));
     let figureOut = ""
     data.map((item)=>{
-      if(item[5]){
-        let GCN = (String(item[5]).toLowerCase().replace(/\s/g, ""));
-        let figurePreffix =`<step id="i06804732.9"><figure figure-style="${item[6]?'column-wide':'page-wide'}" id="i06804732.${GCN}"><graphic controlno="${GCN}" href="x-wc://file=${GCN}.cvx"/>`
+      if(item[4]){
+        let GCN = (String(item[4]).toLowerCase().replace(/\s/g, ""));
+        let figurePreffix =`<step id="i06804732.9"><figure figure-style="${item[5]?'column-wide':'page-wide'}" id="i06804732.${GCN}"><graphic controlno="${GCN}" href="x-wc://file=${GCN}.cvx"/>`
         let figureSuffix=`</figure><para></para></step>`
         let figureMiddle=""
         // let forceStop=false
@@ -282,9 +277,9 @@
         }, (3*1000));
     let figureOut = ""
     data.map((item)=>{
-      if(item[5]){
-        let GCN = (String(item[5]).toLowerCase().replace(/\s/g, ""))
-        let figurePreffix =`<figure figure-style="${item[6]?'column-wide':'page-wide'}" id="i06804732.${GCN}"><graphic controlno="${GCN}" href="x-wc://file=${GCN}.cvx"/>`
+      if(item[4]){
+        let GCN = (String(item[4]).toLowerCase().replace(/\s/g, ""))
+        let figurePreffix =`<figure figure-style="${item[5]?'column-wide':'page-wide'}" id="i06804732.${GCN}"><graphic controlno="${GCN}" href="x-wc://file=${GCN}.cvx"/>`
         let figureSuffix=`</figure>`
         let figureMiddle=""
         // let forceStop=false

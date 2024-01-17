@@ -899,7 +899,7 @@ $(document).ready(function () {
       $(".body").html("");
       $(".body").css("background-image", "url(../img/main_page_low.png)");
     });
-    $(".bt:eq(6)").click(function () {
+    $(".bt:eq(5)").click(function () {
       $(".excel").show();
       $(".body").html(`<form id="form">
               <div class="exceltip">Click excel icon to download Research sheet template.</div>
@@ -1118,7 +1118,7 @@ $(document).ready(function () {
         $("#form").trigger("reset");
       });
     });
-    $(".bt:eq(7)").click(function () {
+    $(".bt:eq(6)").click(function () {
       $(".body").html(`<form id="form">
       <div class="item-spec">
           <div class="sno1">
@@ -1282,7 +1282,7 @@ $(document).ready(function () {
                   height: 100%;">`);
       });
     });
-    $(".bt:eq(10)").click(function () {
+    $(".bt:eq(9)").click(function () {
       $(".body").html(`<form class="metric" id="form">
       <div class="metcontainer">
       <div class="toggle-container">
@@ -1784,12 +1784,8 @@ $(document).ready(function () {
         }
       });
     }); 
-    $(".bt:eq(8)").click(function () {
+    $(".bt:eq(7)").click(function () {
       $(".body").html('<div class="logo"><img src="../img/EA_centerlogo.png" alt=""></div>');   
-    });
-    $("#jt").click(function () {
-      $(".body").html(`<div class="periodicals3"><p>JT Prep</p></div>`);
-      $(".excel").hide();
     });
     $("#prefix").click(function () {
       $(".body").html(`<div class="periodicals4"><p>Prefix Update</p></div>`);
