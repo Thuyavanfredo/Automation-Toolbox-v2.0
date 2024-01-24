@@ -209,7 +209,7 @@
           let figureSuffix=`</figure><para></para></step>`
           let figureMiddle=""
           // let forceStop=false
-          item.slice(7,item.length).map((a)=>{
+          item.slice(6,item.length).map((a)=>{
           a = (a.replace(/\s/g, ""));
             if(a){
               data.map((b)=>{
@@ -220,7 +220,7 @@
               })
             }
           })
-          if(figureMiddle){figureMiddle='<caption> <callist>'+figureMiddle+'</callist></caption>'}
+          if(figureMiddle){figureMiddle='<caption><callist>'+figureMiddle+'</callist></caption>'}
           figureOut+=(figurePreffix+figureMiddle+figureSuffix)
         } else {
           return
@@ -246,7 +246,7 @@
         let figureSuffix=`</figure><para></para></step>`
         let figureMiddle=""
         // let forceStop=false
-        item.slice(7,item.length).map((a)=>{
+        item.slice(6,item.length).map((a)=>{
           a = (a.replace(/\s/g, ""));
           if(a){
             data.map((b)=>{
@@ -257,7 +257,7 @@
             })
           }
         })
-        if(figureMiddle){figureMiddle='<caption> <callist>'+figureMiddle+'</callist></caption>'}
+        if(figureMiddle){figureMiddle='<caption><callist>'+figureMiddle+'</callist></caption>'}
         figureOut+=(figurePreffix+figureMiddle+figureSuffix)
       } else {
         return
@@ -283,7 +283,7 @@
         let figureSuffix=`</figure>`
         let figureMiddle=""
         // let forceStop=false
-        item.slice(7,item.length).map((a)=>{
+        item.slice(6,item.length).map((a)=>{
           a = (a.replace(/\s/g, ""));
           if(a){
             data.map((b)=>{
@@ -294,7 +294,7 @@
             })
           }
         })
-        if(figureMiddle){figureMiddle='<caption> <callist>'+figureMiddle+'</callist></caption>'}
+        if(figureMiddle){figureMiddle='<caption><callist>'+figureMiddle+'</callist></caption>'}
         figureOut+=(figurePreffix+figureMiddle+figureSuffix)
       } else {
         return
