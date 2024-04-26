@@ -1,0 +1,172 @@
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="./steplist.js"></script>
+<link rel="stylesheet" href="./steplist.css" type="text/css" />
+<script src="./jsuite.js"></script>
+<!-- <link rel="stylesheet" href="https://jsuites.net/v4/jsuites.css" type="text/css" /> -->
+
+<body>
+  <div class="scontainer">
+    <div class="bts">
+      <div class="Stepbuttons">
+        <button id="btn4">
+          <p id="btnText4">Figures</p>
+          <div class="checked">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+              <path fill="transparent" d="M14.1 27.2l7.1 7.2 16.7-16.8"></path>
+            </svg>
+          </div>
+        </button>
+      </div>
+    </div>
+    <div class="save-note">
+      <div class="save">
+        <p>To save as local file <font color=#FFFF00;>Press CTRL + S</font>
+        </p>
+      </div>
+      <div class="note">
+        <font color=white>
+          By default Page-wide type for graphics is enabled. For Column-wide type select the check box. Alphabets are
+          case sensitive.
+        </font>
+      </div>
+    </div>
+    <div id="spreadsheet"></div>
+  </div>
+  <script>
+    var data = [
+    ];
+
+    var columns = [
+      {
+        type: 'text',
+        title: 'Item',
+        width: 45
+      },
+      {
+        type: 'text',
+        title: 'Caption',
+        width: 700
+      },
+      {
+        type: 'text',
+        title: 'Graphics Control number',
+        width: 180
+      }
+    ]
+
+    for (let x = 0; x <= 100; x++) {
+      data.push(["", "", "", "", "", ""])
+    }
+
+    var numberOfItems = 5
+
+    for (let y = 0; y <= numberOfItems; y++) {
+      columns.push({
+        type: 'text',
+        title: 'Item no.',
+        width: 70
+      })
+    }
+
+    jspreadsheet(document.getElementById('spreadsheet'), {
+      data: data,
+      columns: columns,
+    });
+
+    $(document).ready(function () {
+      function getArray(item) {
+        if (item[1]) {
+          console.log(item[1]);
+          // Define the pattern to search for
+          const pattern = /(\d+)\s*(kg|m3|m|m\s*3)\b/g;
+
+          let match1;
+          while ((match1 = pattern.exec(item[1])) !== null) {
+              // If a space is found between "m" and "3", alert the user
+              if (match1[2] === 'm' && item[1].substr(match1.index + match1[0].length, 1) === ' ') {
+                  alert("Space found between 'm' and '3' so output will be incorrect.");
+              }
+          }
+
+          // Replace spaces between numbers and units
+          let inputString = item[1].replace(pattern, (match, number, unit) => {
+              // If "m" and "3" are separated by a space, remove it
+              if (unit === 'm 3') {
+                  return number + 'm3';
+              }
+              // If a space is found, remove it
+              if (match.includes(' ')) {
+                  return number + unit;
+              }
+              // If no space is found, return the original match
+              return match;
+          });
+          console.log(inputString);
+
+          let resultArray = inputString.split(',');
+          console.log(resultArray);
+          let newArray = resultArray.map(element =>
+              element.split(/\s+/).map(word =>
+                  word === "ON" || word === "OFF" || word === "UP" || word === "DOWN"|| word === "EXTENDED"|| word === "RETRACTED" || word === "on" || word === "off" || word === "up" || word === "down"|| word === "extended"|| word === "retracted"
+                  ? `<position>${word.toUpperCase()}</position>` 
+                  :/\d/.test(word) && /[a-zA-Z]/.test(word) 
+                  ? (word.match(/kg/i) 
+                  ?   `<unitsgrp><metric>${parseInt(word)} kg</metric><english>${(parseInt(word) * 2.20462262).toFixed(String(parseInt(word)).split(".")[1] && String(parseInt(word)).split(".")[1].length)} lb</english></unitsgrp>`
+                  : word.match(/m3/i) 
+                  ? `<unitsgrp><metric>${parseInt(word)} m<supscrpt>3</supscrpt></metric><english>${(parseInt(word) * 1.30795).toFixed(String(parseInt(word)).split(".")[1] && String(parseInt(word)).split(".")[1].length + 1
+                )} yd<supscrpt>3</supscrpt></english></unitsgrp>` 
+                  : word.match(/mm/i) 
+                  ? `<unitsgrp><metric>${parseInt(word)} mm</metric><english>${(parseInt(word) * 0.03937007874).toFixed(String(parseInt(word)).split(".")[1] && String(parseInt(word)).split(".")[1].length + 1
+                )} inch</english></unitsgrp>` 
+                : word.match(/m/i) 
+                  ? `<unitsgrp><metric>${parseInt(word)} meter</metric><english>${(parseInt(word) * 3.28084).toFixed(String(parseInt(word)).split(".")[1] && String(parseInt(word)).split(".")[1].length + 1
+                )} ft</english></unitsgrp>` 
+                : parseInt(word)) : word).join(' ')
+          );
+
+          console.log(newArray);
+          return newArray;
+        }
+      }
+      $("button:eq(0)").click(function () {
+        var btn = document.getElementById("btn4");
+        var btnText = document.getElementById("btnText4");
+        btnText.innerHTML = "Copied";
+        btn.classList.add("active");
+        setTimeout(function () {
+          btn.classList.remove("active");
+          btnText.innerHTML = "Figures";
+        }, (3 * 1000));
+        let figureOut = ""
+        data.map((item) => {
+          if (item[2] && item[1]) {
+            let GCN = (String(item[2]).toLowerCase().replace(/\s/g, ""))
+            let figurePreffix = `<figure figure-style="page-wide" id="i06804732.${GCN}"><graphic controlno="${GCN}" href="x-wc://file=${GCN}.cvx"/>`
+            let figureSuffix = `</figure>`
+            let figureMiddle = ""
+            // let forceStop=false
+            item.slice(3, item.length).map((a) => {
+              a = (a.replace(/\s/g, ""));
+              if (a) {
+                data.map((b) => {
+                  if (a == b[0]) {
+                    let PN = getArray(b);
+                    figureMiddle += PN
+                  }
+                })
+              }
+            })
+            if (figureMiddle) { figureMiddle = '<caption><para>' + figureMiddle + '</para></caption>' }
+            figureOut += (figurePreffix + figureMiddle + figureSuffix)
+          } else {
+            return
+          }
+        })
+        console.log(figureOut)
+        navigator.clipboard.writeText(figureOut);
+      })
+    })
+  </script>             
+</body>
+</html>

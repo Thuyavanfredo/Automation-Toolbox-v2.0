@@ -1,6 +1,6 @@
 html,body {
     margin: 0;
-    width: 900px;
+    width: 935px;
     height: 600px;
     display: flex;
     position: absolute;
@@ -14,9 +14,9 @@ html,body {
   }
   #message {
       position: absolute;
-      right: 4%;
+      right: 6%;
       top: 90.5%;
-      z-index: 3;
+      z-index: 4;
       font-size: 14px;
       color: #9d835a;
       font-family: 'manrope';
@@ -126,7 +126,7 @@ html,body {
   }
   .container{
     position: relative;
-    z-index: 1;
+    z-index: 3;
     width: 852px;
     height: 568px;
     border-radius: 10px;
@@ -164,6 +164,36 @@ html,body {
     border-radius: 10px 10px 0px 0px;
     transition: scale 0.5s ease;
   }
+  .nav{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-evenly;
+    flex-wrap:nowrap;
+    height: 568px;
+    width: 35px;
+  }
+  #placehold{
+    display: none;
+  }
+  .nav button{
+    -webkit-app-region: no-drag;
+    z-index: 1;
+    position: fixed;
+    color: #5b6876;
+    font-family:"manrope";
+    font-size:large;
+    font-weight: bold;
+    margin: 0;
+    opacity: 1;
+    left: 838px;
+    width: 130px;
+    height: 36px;
+    background: #aec1b1;
+    transform:rotate(90deg);
+    border: none;
+    border-radius: 10px 10px 0px 0px;
+    transition: scale 0.5s ease;
+  }
   .traffic-lights button{
     -webkit-app-region: no-drag;
     opacity: 0.65;
@@ -172,7 +202,7 @@ html,body {
   }
   .pdt-btns button:hover, 
   .spec-btns button:hover, 
-  .da-btns button:hover, 
+  .da-btns button:hover, .omm-btns button:hover, .tsg-btns button:hover, .placehold-btns button:hover,
   .traffic-lights button:hover{
     -webkit-app-region: no-drag;
     /* background: linear-gradient(90deg, rgba(237, 241, 245, 1), rgba(174, 194, 177, 0.42)); */
@@ -187,7 +217,13 @@ html,body {
     border: 1px solid white;
     scale: 1.07;
   }
-  .pdt-btns button:focus, .spec-btns button:focus, .da-btns button:focus{
+  .nav button:hover{
+    background: #fbba4c;
+    color: #9d835a;
+    border: 1px solid white;
+    scale: 1.07;
+  }
+  .pdt-btns button:focus, .spec-btns button:focus, .da-btns button:focus, .omm-btns button:focus, .tsg-btns button:focus, .placehold-btns button:focus,{
     -webkit-app-region: no-drag;
     opacity: 1;
     /* background: linear-gradient(90deg, rgba(237, 241, 245, 1), rgba(174, 194, 177, 0.42)); */
@@ -440,7 +476,7 @@ html,body {
     height: 130px;
     transition: all 0.75s ease;
   }
-  .pdt-btns, .spec-btns, .da-btns{
+  .pdt-btns, .spec-btns, .da-btns, .omm-btns, .tsg-btns, .placehold-btns {
     -webkit-app-region: no-drag;
     margin: 0px 10px;
     display: flex;
@@ -453,7 +489,7 @@ html,body {
     transition: all 0.50s ease;
     animation: button-animate 0.5s ease;
   }
-  .pdt-btns button, .spec-btns button, .da-btns button{
+  .pdt-btns button, .spec-btns button, .da-btns button, .omm-btns button, .tsg-btns button, .placehold-btns button{
     -webkit-app-region: no-drag;
     padding: 0px 0px;
     font-family: 'manrope';
@@ -573,6 +609,15 @@ html,body {
     border-radius: 15px;
     background: #e1e2e2;
   }
+  .tsg input{
+    -webkit-app-region: no-drag;
+    width: 155px;
+    height: 26px;
+    border: none;
+    border-radius: 15px;
+    background: #e1e2e2;
+    padding: 5px 5px;
+  }
   .sno input,.sno1 input{
     -webkit-app-region: no-drag;
     width: 200px;
@@ -647,6 +692,22 @@ html,body {
   }
   .xtitle{
     margin: 0px 35px 10px 12px;
+    width: fit-content;
+    color: #565946;
+    font-size: 22px;
+    font-weight: bold;
+    font-family: 'Avenir';
+  }
+  .tsgtitle{
+    margin: 0px 15px 10px 14px;
+    width: fit-content;
+    color: #565946;
+    font-size: 22px;
+    font-weight: bold;
+    font-family: 'Avenir';
+  }
+  .tsgtitle1{
+    margin: 0px 15px 10px 14px;
     width: fit-content;
     color: #565946;
     font-size: 22px;
@@ -794,6 +855,18 @@ html,body {
     transition-delay: 0.3s;
     stroke-dashoffset: 0;
   }
+  .tsg{
+    width: 390px;
+    height: 430px;
+    display: flex;
+    flex-direction: column;
+    column-gap: 50px;
+    justify-content: space-around;
+    align-items: flex-start;
+  }
+  .tsg-ref{
+    margin: 20px 0px 0px 0px;
+  }
   .spec{
     width: 626px;
     height: 430px;
@@ -815,6 +888,18 @@ html,body {
   textarea{
     -webkit-app-region: no-drag;
     width: 250px;
+    height: 300px;
+    border: none;
+    border-radius: 15px;
+    background: #e1e2e2;
+  }
+  .tsgtextarea{
+    margin: 20px 0px 0px 0px;
+  }
+  .tsgtextarea textarea{
+    -webkit-app-region: no-drag;
+    margin: 0px 0px 15px 15px;
+    width: 590px;
     height: 300px;
     border: none;
     border-radius: 15px;
@@ -1033,7 +1118,7 @@ html,body {
   .traffic-lights {
       -webkit-app-region: no-drag;
       position: absolute;
-      z-index: 2;
+      z-index: 4;
       top: 0px;
       left: 838px;
   

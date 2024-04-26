@@ -2,6 +2,7 @@ const { app, BrowserWindow, ipcMain} = require('electron');
 const path = require('path');
 const { autoUpdater } = require('electron-updater')
 const log = require('electron-log');
+const { spawn } = require('child_process');
 const fs = require("fs");
 
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
@@ -49,7 +50,7 @@ let mainWindow;
 function createWindow() {
   // Create the browser window.
     mainWindow = new BrowserWindow({
-    width: 887,
+    width: 922,
     height: 568,
     icon: path.join(__dirname, '../img/Logo.ico'),
     // titleBarStyle: 'hidden',
@@ -167,7 +168,7 @@ ipcMain.on("app/child", () => {
   childWindow = new BrowserWindow ({
     width,
     height,
-    icon: path.join(__dirname, '../img/android-chrome-512x512.png'),
+    icon: path.join(__dirname, '../img/Logo.png'),
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: true,
@@ -188,7 +189,7 @@ ipcMain.on("app/child1", () => {
   childWindow1 = new BrowserWindow ({
     width,
     height,
-    icon: path.join(__dirname, '../img/android-chrome-512x512.png'),
+    icon: path.join(__dirname, '../img/Logo.png'),
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: true,
@@ -197,6 +198,27 @@ ipcMain.on("app/child1", () => {
     },
   });
   childWindow1.loadFile(path.join(__dirname,'steplistD&A.html'));
+  childWindow1.setMenuBarVisibility(false);
+});
+ipcMain.on("app/child2", () => {
+  const { screen } = require('electron')
+
+  // Create a window that fills the screen's available work area.
+  const primaryDisplay = screen.getPrimaryDisplay()
+  const { width, height } = primaryDisplay.workAreaSize
+  let childWindow1;
+  childWindow1 = new BrowserWindow ({
+    width,
+    height,
+    icon: path.join(__dirname, '../img/Logo.png'),
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: true,
+      // enableRemoteModule: true,
+      preload: path.join(__dirname, 'preload.js'),
+    },
+  });
+  childWindow1.loadFile(path.join(__dirname,'steplistOMM.html'));
   childWindow1.setMenuBarVisibility(false);
 });
 ipcMain.on("app/jt", () => {
@@ -212,7 +234,7 @@ ipcMain.on("app/jt", () => {
 });
 ipcMain.on("app/prefix", () => {
   var child = require('child_process').execFile;
-  var executablePath = path.join(__dirname,'Effectivity Macro 2.07.exe');
+  var executablePath = "./resources/Effectivity Macro 2.07.exe";
   
   child(executablePath, function(err, data) {
       if(err){

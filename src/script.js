@@ -24,6 +24,8 @@ $(document).ready(function () {
       $(".bug").show();
       $(".da-btns").hide();
       $(".excel").hide();
+      $(".omm-btns").hide();
+      $(".tsg-btns").hide();
       $("#text-title").hide();
     });
     $(".icon-expand:nth-child(2)").click(function () {
@@ -57,6 +59,8 @@ $(document).ready(function () {
       $("#text-title").hide();
       $(".bug").show();
       $(".excel").hide();
+      $(".tsg-btns").hide();
+      $(".omm-btns").hide();
       $(".video").hide();
     });
     $(".icon-expand:nth-child(3)").click(function () {
@@ -138,6 +142,8 @@ $(document).ready(function () {
       $("#text-title").hide();
       $(".bug").show();
       $(".excel").hide();
+      $(".tsg-btns").hide();
+      $(".omm-btns").hide();
       $(".video").hide();
     });
     $(".bt:eq(0)").click(function () {
@@ -1224,6 +1230,8 @@ $(document).ready(function () {
       $(".bug").hide();
       $(".spec-btns").hide();
       $(".excel").hide();
+      $(".omm-btns").hide();
+      $(".tsg-btns").hide();
       $(".da-btns").hide();
     });
     $("#spec").click(function () {
@@ -1249,6 +1257,8 @@ $(document).ready(function () {
       $(".pdt-btns").hide();
       $(".spec-btns").show();
       $(".da-btns").hide();
+      $(".omm-btns").hide();
+      $(".tsg-btns").hide();
       $(".excel").hide();
 
     });
@@ -1274,13 +1284,69 @@ $(document).ready(function () {
       $(".pdt-btns").hide();
       $(".bug").hide();
       $(".spec-btns").hide();
+      $(".omm-btns").hide();
       $(".excel").hide();
+      $(".tsg-btns").hide();
       $(".da-btns").show();
       $("#weight").click(function () {
          $(".body").html(`<embed type="text/html" src="https://engineeringautomation.ecorp.cat.com/eatcui/PNWC/" 
             style="width: 100%;
                   height: 100%;">`);
       });
+    });
+    $("#omm").click(function () {
+      $(".body").html(`<div class="periodicals2"><p>OMM</p></div>`);
+      $(".body").css({
+        "background-image": "none",
+        width: "626px",
+        height: "420px",
+        transition: "all 0.4s ease",
+        transform: "translateX(180px)",
+      });
+      $(".icon").css({
+        transform: "translateX(-280px)",
+        transition: "transform 0.4s ease",
+      });
+      $(".icon1").css({
+        transform: "translateX(320px)",
+        transition: "transform 0.4s ease",
+      });
+      $("#text-title").show();
+      $("video").hide();
+      $(".pdt-btns").hide();
+      $(".bug").hide();
+      $(".spec-btns").hide();
+      $(".excel").hide();
+      $(".da-btns").hide();
+      $(".tsg-btns").hide();
+      $(".omm-btns").show();
+    });
+    $("#tsg").click(function () {
+      $(".body").html(`<div class="periodicals2"><p>TSG</p></div>`);
+      $(".body").css({
+        "background-image": "none",
+        width: "626px",
+        height: "420px",
+        transition: "all 0.4s ease",
+        transform: "translateX(180px)",
+      });
+      $(".icon").css({
+        transform: "translateX(-280px)",
+        transition: "transform 0.4s ease",
+      });
+      $(".icon1").css({
+        transform: "translateX(320px)",
+        transition: "transform 0.4s ease",
+      });
+      $("#text-title").show();
+      $("video").hide();
+      $(".pdt-btns").hide();
+      $(".bug").hide();
+      $(".spec-btns").hide();
+      $(".excel").hide();
+      $(".da-btns").hide();
+      $(".omm-btns").hide();
+      $(".tsg-btns").show();
     });
     $(".bt:eq(9)").click(function () {
       $(".body").html(`<form class="metric" id="form">
@@ -1790,6 +1856,363 @@ $(document).ready(function () {
     $("#prefix").click(function () {
       $(".body").html(`<div class="periodicals4"><p>Prefix Update</p></div>`);
       $(".excel").hide();
+    });
+    $(".bt:eq(11)").click(function () {
+      $(".body").html(`<form id="form">
+              <div class="tsg">
+                  <div class="tsg-ref">
+                  <label class="tsgtitle">IE Control Number</label>
+                  <input id="userInput1" type="text" required placeholder="Enter IE Control Number" name="IE">
+                  </div>
+                  <div class="tsgtextarea">
+                  <label class="tsgtitle1">Paste XML</label>
+                  <textarea required placeholder="Paste Old format" id="userInput"></textarea></div>
+                  <div class="ssubmit">
+                  <button type="submit" onclick="window.electronAPI.updateEvent('Old to New')" id="btn">
+                  <p id="btnText">Generate</p>
+                  <div class="checked">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                      <path fill="transparent" d="M14.1 27.2l7.1 7.2 16.7-16.8"></path>
+                    </svg>
+                  </div>
+                </button>            
+                  <button class="bt1" type="reset">Clear</button>
+                  </div>
+              </div>
+    </form>`);
+      $("#form").submit(function (e) {
+        var btn = document.getElementById("btn");
+        var btnText = document.getElementById("btnText");
+        btnText.innerHTML = "Copied";
+        btn.classList.add("active");
+        setTimeout(function(){
+        btn.classList.remove("active");
+        btnText.innerHTML = "Generate";  
+      }, (3*1000));
+        e.preventDefault();
+        const text1 = document.getElementById("userInput").value;
+        const text2 = document.getElementById("userInput1").value;
+        const tbodyStartIndex = text1.indexOf('<tbody>');
+        const tbodyEndIndex = text1.indexOf('</tbody>');
+        
+        // Extract the text between <tbody> and </tbody>
+        const tbodyText = text1.substring(tbodyStartIndex + '<tbody>'.length, tbodyEndIndex);
+        const rowsArray = tbodyText.match(/<row>[\s\S]*?<\/row>/g); // Remove empty entries
+        // .filter(entry => entry.trim() !== '')
+        let codeRemain = [rowsArray.pop()];
+
+        console.log(codeRemain);
+
+        console.log(rowsArray); // Output the content between the second <row> and </row> tags
+        // console.log(rowsArray[1]);
+        // console.log(rowsArray[6]);
+        // console.log(rowsArray[10]);
+        // Define a function to check if a string contains a substring
+
+        let trimmedArray = rowsArray.map(element => {
+            let startIndex = element.indexOf('<para>') + '<para>'.length;
+            let endIndex = element.indexOf('<?Pub _newline?>', startIndex) + '<?Pub _newline?>'.length;
+            return element.substring(endIndex);
+        });
+        
+        console.log(trimmedArray);
+        let trimmedArraycode = codeRemain.map(element => {
+            let startIndex = element.indexOf('<para>') + '<para>'.length;
+            let endIndex = element.indexOf('<?Pub _newline?>', startIndex) + '<?Pub _newline?>'.length;
+            return element.substring(endIndex);
+        });
+        
+        console.log(trimmedArraycode);
+        // function replaceTextWithNumberIgnoreCase(trimmedArray) {
+        //     for (let i = 0; i < trimmedArray.length; i++) {
+        //         trimmedArray[i] = trimmedArray[i].replace(/Proceed to Test Step \d+/gi, `Proceed to Table XXXXXX <xref format="dita" href="#./${text2}.${i}" scope="local" type="table"></xref>`);
+        //     }
+        //     return trimmedArray;
+        // }
+        
+        // // Provided array     
+        // // Applying the function
+        // providedArray = replaceTextWithNumberIgnoreCase(trimmedArray);
+        // console.log(providedArray);
+
+        const containsSubstring = (string, substring) => {
+            return string.toLowerCase().includes(substring.toLowerCase());
+        };
+
+        // Initialize an array to store the results
+        let separateArray = [];
+        // Iterate over each element in the rowsArray
+        rowsArray.forEach(row => {
+            // Check if the row contains "Begin Process"
+            if (containsSubstring(row, "Begin Process")) {
+                // If "Begin Process" is present, check for "FMI" in the same row
+                if (containsSubstring(row, "FMI")) {
+                    // If "FMI" is present, split the row by "FMI" and store the parts
+                    const splitArray = row.split("FMI");
+                    // Trim and push the parts into the separateArray
+                    separateArray.push(splitArray[1].trim().split(" ")[0]); // Get the first word after "FMI"
+                }
+            }
+        });
+
+        // Output the separateArray
+        console.log(separateArray);
+
+
+        const emphasisArray = rowsArray.map(row => row.match(/<emphasis>(.*?)<\/emphasis>/)[1]);
+        console.log(emphasisArray);
+        const emphasisArraycode = codeRemain.map(row => row.match(/<emphasis>(.*?)<\/emphasis>/)[1]);
+        console.log(emphasisArraycode);
+
+        const newtrimArray = emphasisArray.map(item => {
+            if (item.startsWith("Begin Process")) {
+                return emphasisArraycode[0];
+            } else {
+                return item;
+            }
+        });
+        
+        console.log(newtrimArray);
+
+        let indices = [];
+
+        for (let i = 0; i < rowsArray.length; i++){
+            if (rowsArray[i].includes("Begin Process")) {
+                indices.push(i);
+            }
+        }
+        console.log(indices);
+
+
+        let filteredArray = newtrimArray.map(item => item.replace(/^\d+\.\s*/, ''));
+        let filteredcodeRemain = emphasisArraycode.map(item => item.replace(/^\d+\.\s*/, ''));
+
+
+        console.log(filteredArray);
+        let filteredcodeRemaintext = filteredcodeRemain[0];
+        console.log(filteredcodeRemaintext);
+        let finalConcat = filteredArray.push(filteredcodeRemain[0]);
+        console.log(filteredcodeRemain[0]);
+
+        console.log(finalConcat[5]);
+
+
+        let result = [];
+
+        for (let i = 0; i < indices.length - 1; i++) {
+          let start = indices[i] + 1;
+          let end = indices[i + 1];
+          let pairValue = "";
+        
+          for (let j = start; j < end; j++) {
+            pairValue += rowsArray[j];
+          }
+        
+          result.push(pairValue);
+        }
+        
+        // Concatenate the remaining values after the last pair of indices
+        let lastStart = indices[indices.length - 1] + 1;
+        let remainingValue = "";
+        for (let k = lastStart; k < rowsArray.length; k++) {
+          remainingValue += rowsArray[k];
+        }
+        
+        result.push(remainingValue);
+        console.log(result);
+            let filteredRowsArray = rowsArray.map(row => {
+            let rowText = row;
+            emphasisArray.forEach(emphasis => {
+                if (row.includes(emphasis)) {
+                    rowText = rowText.replace(`<emphasis><para>${emphasis}</para></emphasis>`, '');
+                }
+            });
+            return rowText;
+        });
+        
+        console.log(filteredRowsArray);
+
+        const resultArray = [];
+
+        for (let i = 0; i < indices.length; i++) {
+            const start = indices[i];
+            let end;
+
+            if (i === indices.length - 1) {
+                end = filteredRowsArray.length;
+                console.log(end);
+            } else {
+                end = indices[i + 1];
+            }
+
+            const range = [];
+
+            for (let j = start + 1; j < end; j++) {
+                range.push(j);
+            }
+            if (range.length > 0) {
+                resultArray.push(range);
+            }
+        }
+
+        console.log(resultArray);
+
+        let output = "";
+        const sectionStart = `<sect id="${text2}.0">
+        <title>Diagnostic Trouble Code Procedure</title>
+        <!--Cut out the tools that aren't necessary for your troubleshooting steps. Ensure the p/n's are still current and match your Service Tools IE.-->
+        <table frame="all" id="${text2}.6" pgwide="1" tooltbl="Y">
+        <tgroup cols="4">
+        <?PubTbl tgroup clmarg="2.00pt" crmarg="2.00pt"?>
+        <colspec colname="col1" colwidth="0.49*"/>
+        <colspec colname="col2" colwidth="0.92*"/>
+        <colspec colname="col3" colwidth="1.99*"/>
+        <colspec colname="col4" colwidth="0.62*"/>
+        <thead>
+        <row>
+        <entry align="center" nameend="col4" namest="col1" valign="top"><para>Required Tools</para></entry>
+        </row>
+        <row>
+        <entry align="center" valign="top"><para>Tool</para></entry>
+        <entry align="center" valign="top"><para>Part Number</para></entry>
+        <entry align="center" valign="top"><para>Description</para></entry>
+        <entry align="center" valign="top"><para>Qty</para></entry>
+        </row>
+        </thead>
+        <tbody>
+        <row>
+        <entry align="center" morerows="3" valign="middle"><para>T1</para></entry>
+        <entry align="center"><para><partno>237-5130</partno></para></entry>
+        <entry align="center" valign="middle"><para>Digital Multimeter Group</para></entry>
+        <entry align="center" valign="middle"><para>1</para></entry>
+        </row>
+        <row>
+        <entry align="center"><para><partno> 8T-3224</partno></para></entry>
+        <entry align="center" valign="middle"><?Pub _cellfont Weight="medium"?><cpn>Needle Tip Group</cpn></entry>
+        <entry align="center" valign="middle"><para>1</para></entry>
+        </row>
+        <row>
+        <entry align="center"><para><partno> 7X-1710</partno></para></entry>
+        <entry align="center" valign="middle"><?Pub _cellfont Weight="medium"?><para><cpn>Multimeter Probe Group</cpn></para></entry>
+        <entry align="center" valign="middle"><para>1</para></entry>
+        </row>
+        <row>
+        <entry align="center"><para><partno> 8T-8726</partno></para></entry>
+        <entry align="center" valign="middle"><para><cpn>Cable Assembly (Three Pin)</cpn> <cpnmod>3-Pin Breakout</cpnmod></para></entry>
+        <entry align="center" valign="middle"><para>1</para></entry>
+        </row>
+        <row>
+        <entry align="center" morerows="2" valign="middle"><para>T2</para></entry>
+        <entry align="center"><para>JERD2129</para></entry>
+        <entry align="center" valign="middle"><para><trademark>Cat</trademark><supscrpt>&#xae;</supscrpt> Electronic Technician (ET)</para></entry>
+        <entry align="center" valign="middle"><para>1</para></entry>
+        </row>
+        <row>
+        <entry align="center"></entry>
+        <entry align="center" valign="middle"><para>Windows-based PC</para></entry>
+        <entry align="center" valign="middle"><para>1</para></entry>
+        </row>
+        <row valign="middle">
+        <entry align="center" colname="col2"><para><partno>538-5051</partno></para></entry>
+        <entry align="center" colname="col3"><para><cpn>Communication Adapter Gp</cpn></para></entry>
+        <entry align="center" colname="col4"><para>1</para></entry>
+        </row>
+        <row>
+        <entry align="center" valign="middle"><para>T3</para></entry>
+        <entry align="center"><para><partno> 6V-4148</partno></para></entry>
+        <entry align="center" valign="middle"><para><cpn>Connector Repair Kit</cpn> <cpnmod><trademark>Sure Seal</trademark></cpnmod></para></entry>
+        <entry align="center" valign="middle"><para>1</para></entry>
+        </row>
+        <row>
+        <entry align="center" valign="middle"><para>T4</para></entry>
+        <entry align="center"><para><partno>190-8900</partno></para></entry>
+        <entry align="center" valign="middle"><para><cpn>Connector Field Repair Kit</cpn> <cpnmod><propname>Deutsch</propname></cpnmod></para></entry>
+        <entry align="center" valign="middle"><para>1</para></entry>
+        </row>
+        <row>
+        <entry align="center" valign="middle"><para>T5</para></entry>
+        <entry align="center"><para><partno>175-3700</partno></para></entry>
+        <entry align="center" valign="middle"><para><cpn>Connector Repair Kit</cpn> <cpn><propname>Deutsch</propname> DT</cpn></para></entry>
+        <entry align="center" valign="middle"><para>1</para></entry>
+        </row>
+        </tbody>
+        </tgroup>
+        </table>
+        <para>Prior to beginning this procedure, inspect the harness connectors that are involved in this circuit. Poor connections can often be the cause of a problem in an electrical circuit. Verify that all connections in the circuit are clean, secure, and in good condition. Check the wiring harness for pinch points or abrasions. Look for and repair areas that indicate wires are exposed. If a problem with a connection is found, correct the problem and verify that the DTC is active before performing a troubleshooting procedure.</para>
+        <steplist>
+        <step id="${text2}.7">
+        <para>Identify the active FMI associated with the DTC.</para>
+        </step>
+        <step id="${text2}.8">
+        <para>After determining which FMI is present, use the list below to determine which procedure to follow:</para>
+        </step>
+        </steplist><randlist>`;
+        let randList = "";
+        for (let i = 0; i < separateArray.length; i++){
+            const randFMI = `<randitem>FMI <code>${separateArray[i]}</code> , proceed to <xref format="dita" href="#${text2}/${text2}.${i+1}" scope="local" type="sect"></xref>.</randitem>`;
+            randList += randFMI;
+        }
+        const sectionEnd = `</randlist></sect>`;
+        for (let index = 0; index < separateArray.length; index++){
+            const sectionFmi = `<sect id="${text2}.${index+1}"><title>FMI ${separateArray[index]}</title>`
+            // console.log(result[i]);
+            // let backPortion = result[index];
+            // console.log(backPortion);
+            let textValue = "";
+
+            if (index < resultArray.length) {
+                let subArray = resultArray[index];
+                console.log(resultArray[index]);
+                for (let j = 0; j < subArray.length; j++) {
+                    let subIndex = subArray[j];
+                    if (subIndex < filteredArray.length) {
+                        textValue += `<table frame="all" id="${text2}.${j}" pgwide="1">
+                        <tgroup cols="3">
+                        <?PubTbl tgroup clmarg="2.00pt" crmarg="2.00pt"?>
+                        <colspec colname="col1"/>
+                        <colspec colname="col2"/>
+                        <colspec colname="col3"/>
+                        <thead><row>
+                        <entry align="center" nameend="col3" namest="col1" valign="top"><para>${filteredArray[subIndex]}</para></entry>
+                        </row>
+                        <row>
+                        <entry align="center" valign="top"><para>Troubleshooting Test Steps</para></entry>
+                        <entry align="center" valign="top"><para>Values</para></entry>
+                        <entry align="center" valign="top"><para>Results</para></entry>
+                        </row>
+                        </thead>
+                        <tbody><row><entry>${trimmedArray[subIndex].replace(/Proceed to Test Step \d+/gi, `Proceed to <label>${filteredArray[subIndex+1]}</label> Table XXXXXX `)}</tbody></tgroup> 
+                        </table>`;
+                    }
+                }
+                textValue += `<table frame="all" id="${text2}.${index}" pgwide="1">
+                <tgroup cols="3">
+                <?PubTbl tgroup clmarg="2.00pt" crmarg="2.00pt"?>
+                <colspec colname="col1"/>
+                <colspec colname="col2"/>
+                <colspec colname="col3"/>
+                <thead><row>
+                <entry align="center" nameend="col3" namest="col1" valign="top"><para>${filteredcodeRemain[0]}</para></entry>
+                </row>
+                <row>
+                <entry align="center" valign="top"><para>Troubleshooting Test Steps</para></entry>
+                <entry align="center" valign="top"><para>Values</para></entry>
+                <entry align="center" valign="top"><para>Results</para></entry>
+                </row>
+                </thead>
+                <tbody><row><entry>${trimmedArraycode[0]}</tbody></tgroup> 
+                </table>`;
+            }
+            // <xref format="dita" href="#./${text2}.${subIndex}" scope="local" type="table"></xref>
+            output = output+sectionFmi+textValue+`</sect>`;
+        }
+        console.log(sectionStart+output+sectionEnd);
+        finalOutput = sectionStart+randList+sectionEnd+output;
+        navigator.clipboard.writeText(finalOutput);
+      });
+      $(".ssubmit button:nth-child(2)").click(function (e) {
+        $("#form").trigger("reset");
+      });
     });
   });
   

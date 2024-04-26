@@ -78,6 +78,7 @@ const API = {
         link: () => ipcRenderer.send("app/link"),
         child: () => ipcRenderer.send("app/child"),
         child1: () => ipcRenderer.send("app/child1"),
+        child2: () => ipcRenderer.send("app/child2"),
         prefix: () => ipcRenderer.send("app/prefix"),
         download: () => ipcRenderer.send("app/download")
 },
