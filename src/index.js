@@ -208,8 +208,10 @@ ipcMain.on("app/child2", () => {
   const { width, height } = primaryDisplay.workAreaSize
   let childWindow1;
   childWindow1 = new BrowserWindow ({
-    width,
+    width: 1425,
     height,
+    resizable:false,
+    maximizable: false,
     icon: path.join(__dirname, '../img/Logo.png'),
     webPreferences: {
       nodeIntegration: true,

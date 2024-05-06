@@ -8,7 +8,7 @@
 <body>
   <div class="scontainer">
     <div class="bts">
-      <div class="Stepbuttons">
+      <div class="Stepbuttons1">
         <button id="btn4">
           <p id="btnText4">Figures</p>
           <div class="checked">
@@ -17,6 +17,7 @@
             </svg>
           </div>
         </button>
+        <button class="bt" type="reset" onclick="window.location.replace(window.location.href)">Clear</button>
       </div>
     </div>
     <div class="save-note">
@@ -26,8 +27,7 @@
       </div>
       <div class="note">
         <font color=white>
-          By default Page-wide type for graphics is enabled. For Column-wide type select the check box. Alphabets are
-          case sensitive.
+          Mention the unit after the number without space for conversion (For Eg: "Machine with swing boom, and 250kg counterweight, 150m, 10m3 bucket, and blade in down position.")
         </font>
       </div>
     </div>
@@ -79,7 +79,7 @@
         if (item[1]) {
           console.log(item[1]);
           // Define the pattern to search for
-          const pattern = /(\d+)\s*(kg|m3|m|m\s*3)\b/g;
+          const pattern = /(\d+)\s*(kg|m3|m|mm|m\s*3)\b/g;
 
           let match1;
           while ((match1 = pattern.exec(item[1])) !== null) {

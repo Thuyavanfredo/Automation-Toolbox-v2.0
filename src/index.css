@@ -73,7 +73,7 @@ html,body {
   #downloadButton{
       background: none;
       position: absolute;
-      right: 27px;
+      right: 50px;
       top: 83px;
   }
   .periodicals1{
@@ -559,6 +559,13 @@ html,body {
     top: 45px;
     left: 5px;
   }
+  .tsg-container{
+    display: flex;
+    flex-direction: column;
+    align-content: space-evenly;
+    position: absolute;
+    left: 5px;
+  }
   .xref-container{
     display: flex;
     flex-direction: column;
@@ -584,6 +591,36 @@ html,body {
     font-weight: bold;
     border-radius: 10px;
   }
+  .tsg-container ul{
+    list-style: none;
+    display: grid;
+    width: 320px;
+    height: 68px;
+    background: #e1e2e2;
+    grid-template-columns: 10px 10px 10px;
+    row-gap: 0px;
+    column-gap: 80px;
+    justify-content: left;
+    align-content: space-around;
+    color: #565946;
+    font-family: 'Avenir';
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 10px;
+  }
+  .tsg-container li{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 85px;
+    height: 25px;
+    margin: 0px 0px 0px -34px;
+  }
+  .tsg-container label{
+    margin-left: 10px;
+    width: 150px;
+  }
   .graphic-container li{
     display: flex;
     flex-direction: row;
@@ -601,7 +638,7 @@ html,body {
     border-radius: 15px;
     background: #e1e2e2;
   }
-  .xno input{
+  .xno input, .tno input{
     -webkit-app-region: no-drag;
     width: 350px;
     height: 26px;
@@ -609,6 +646,25 @@ html,body {
     border-radius: 15px;
     background: #e1e2e2;
   }
+  .tno input{
+    margin: 0px 0px 0px 0px;
+  }
+  .fmi input{
+    width: 20px;
+    height: 20px;
+  }
+  .ttype select	{
+    -webkit-app-region: no-drag;
+    width: 358px;
+    height: 30px;
+    border: none;
+    padding-left: 10px;
+    border-radius: 15px;
+    background: #e1e2e2;
+    padding: 5px;
+    font-size: 12px;
+    font-family: 'Avenir';
+}
   .tsg input{
     -webkit-app-region: no-drag;
     width: 155px;
@@ -629,6 +685,9 @@ html,body {
   .x-ref1 input{
     margin-left:-3px; 
   }
+  .t-ref1 input{
+    margin-left:-3px; 
+  }
   .gno{
     margin-top: 2px;
   }
@@ -637,6 +696,11 @@ html,body {
     flex-direction: column;
     justify-content: space-evenly;
     height: 120px;
+  }
+  .tno{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
   }
   .sno{
     display: flex;
@@ -660,7 +724,13 @@ html,body {
   .x-ref1{
     margin: 33px 0px 0px 0px;
   }
-  .gno input,.xno input,.sno input,.sno1 input,.metric-items input::placeholder {
+  .t-ref{
+    margin: 36px 0px 0px 0px;
+  }
+  .t-ref1{
+    margin: 50px 0px 0px 0px;
+  }
+  .gno input,.xno input,.tno input,.sno input,.sno1 input,.metric-items input::placeholder {
     padding-left: 10px;
   }
   .metric-items input{
@@ -671,18 +741,34 @@ html,body {
     -webkit-app-region: no-drag;
     margin: 55px 0px 0px 0px;
   }
+  .fmiType{
+    -webkit-app-region: no-drag;
+    margin: 50px 0px 0px 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
   .xtype{
     -webkit-app-region: no-drag;
     margin: 36px 0px 0px 0px;
+  }
+  .ttype{
+    -webkit-app-region: no-drag;
+    margin: 50px 0px 0px 0px;
   }
   .gtype1,.xtype1{
     -webkit-app-region: no-drag;
     margin: 0px 0px 0px 9px;
   }
+  .fmi{
+    -webkit-app-region: no-drag;
+    margin: 0px 5px 0px 10px;
+  }
   .gtype1 input{
     margin: 0px 0px 0px -20px;
   }
-  .gtitle, .xtitle, .spectitle{
+  .gtitle, .xtitle, .spectitle, .fmititle{
     margin: 0px 35px 10px 12px;
     width: fit-content;
     color: #565946;
@@ -690,8 +776,16 @@ html,body {
     font-weight: bold;
     font-family: 'Avenir';
   }
-  .xtitle{
-    margin: 0px 35px 10px 12px;
+  .ttitle{
+    margin: 0px 128px 10px 12px;
+    width: fit-content;
+    color: #565946;
+    font-size: 22px;
+    font-weight: bold;
+    font-family: 'Avenir';
+  }
+  .ttitle1{
+    margin: 0px 64px 10px 12px;
     width: fit-content;
     color: #565946;
     font-size: 22px;
@@ -740,6 +834,16 @@ html,body {
     top: 18px;
     left: -5px;
   }
+  .tsubmit{
+    -webkit-app-region: no-drag;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    position: relative;
+    width: 614.67px;
+    top: 113px;
+    left: -5px;
+  }
   .ssubmit{
     -webkit-app-region: no-drag;
     display: flex;
@@ -748,6 +852,16 @@ html,body {
     position: absolute;
     width: 614.67px;
     top: 435px;
+    left: 0px;
+  }
+  .gtsubmit{
+    -webkit-app-region: no-drag;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    position: absolute;
+    width: 614.67px;
+    top: 432px;
     left: 0px;
   }
   .msubmit-da{
@@ -768,7 +882,7 @@ html,body {
     position: absolute;
     top: 435px;
   }
-  .submit button,.xsubmit button,.ssubmit button, .msubmit-da button{
+  .submit button,.xsubmit button,.ssubmit button, .tsubmit button,.gtsubmit button,.msubmit-da button{
     -webkit-app-region: no-drag;
     position: relative;
     width: 134px;
@@ -808,7 +922,7 @@ html,body {
     overflow: hidden;
     cursor: pointer;
   }
-  .submit button :hover,.xsubmit button :hover, .ssubmit button :hover,.spsubmit button :hover, .msubmit-da button :hover{
+  .submit button :hover,.xsubmit button :hover, .tsubmit button :hover,.gtsubmit button :hover,.ssubmit button :hover,.spsubmit button :hover, .msubmit-da button :hover{
     scale: 1.2;
   }
   .checked {
@@ -1079,6 +1193,18 @@ html,body {
     }
     .note h3{
       display: none;
+      font-family: 'Avenir';
+      color: #565946;
+    }
+    .note1{
+      position: absolute;
+      font-size: 12px;
+      color: #000000;
+      height: 50px;
+      left: 259px;
+      top: 69px;
+    }
+    .note1 h3{
       font-family: 'Avenir';
       color: #565946;
     }
